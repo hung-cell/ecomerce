@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/ecommerce_db}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:root}
+
+logging:
+  level:
+    root: WARN
+    org.example.ecomerce: INFO
+  file:
+    name: /var/log/ecommerce/application.log
+
