@@ -1,4 +1,8 @@
-package org.example.ecomerce.module.product.entity.enums;
+package org.example.ecomerce.module.product.enums;
 
-public class ProductStatus {
+public enum ProductStatus {
+    ACTIVE,
+    INACTIVE,
+    OUT_OF_STOCK,
+    DISCONTINUED
 }
