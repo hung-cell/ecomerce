@@ -22,7 +22,10 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 
     // Kiểm tra tồn tại (để Validate duplicate khi Create/Update)
     boolean existsByName(String name);
+
     boolean existsBySku(String sku);
+
+    boolean existsByCategoryId(Long categoryId);
 
     // --- 2. Filter Methods (Query Method Name Strategy) ---
     // Spring Data JPA sẽ tự dịch tên hàm thành câu SQL tương ứng

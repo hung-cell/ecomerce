@@ -26,8 +26,10 @@ public class Category extends BaseEntity {
 
     // QUAN HỆ 1-N (Một danh mục có nhiều sản phẩm)
     // mappedBy = "category": Trỏ tới biến 'category' bên file Product
-    // FetchType.LAZY: Khi lấy Category, KHÔNG tự động lấy list Product (Tránh làm nặng ram)
-    // CascadeType.ALL: (Tùy chọn) Nếu xóa Category thì xóa luôn Product (Cẩn thận khi dùng)
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // FetchType.LAZY: Khi lấy Category, KHÔNG tự động lấy list Product (Tránh làm
+    // nặng ram)
+    // CascadeType.ALL: (Tùy chọn) Nếu xóa Category thì xóa luôn Product (Cẩn thận
+    // khi dùng)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Product> products;
 }

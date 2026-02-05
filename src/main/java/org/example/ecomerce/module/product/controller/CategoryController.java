@@ -24,32 +24,31 @@ public class CategoryController {
     public ResponseEntity<?> createCategory(
             @Valid @RequestBody CategoryDTO categoryDTO,
             BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             List<String> errorMessages = result.getFieldErrors()
                     .stream()
                     .map(FieldError::getDefaultMessage)
                     .toList();
             return ResponseEntity.badRequest().body(errorMessages);
         }
-        Category category = categoryService.createCategory(categoryDTO);
+        CategoryDTO category = categoryService.createCategory(categoryDTO);
         return ResponseEntity.ok(category);
     }
 
     // 2. Lấy tất cả danh mục (GET)
     @GetMapping("")
-    public ResponseEntity<List<Category>> getAllCategories() {
-        List<Category> categories = categoryService.getAllCategories();
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
+        List<CategoryDTO> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);
     }
 
     // 3. Sửa danh mục (PUT)
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateCategory(
+    public ResponseEntity<CategoryDTO> updateCategory(
             @PathVariable Long id,
-            @Valid @RequestBody CategoryDTO categoryDTO
-    ) {
-        categoryService.updateCategory(id, categoryDTO);
-        return ResponseEntity.ok("Update category successfully");
+            @Valid @RequestBody CategoryDTO categoryDTO) {
+        CategoryDTO updatedCategory = categoryService.updateCategory(id, categoryDTO);
+        return ResponseEntity.ok(updatedCategory);
     }
 
     // 4. Xóa danh mục (DELETE)
