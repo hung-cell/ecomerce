@@ -1,7 +1,8 @@
 spring:
   application:
     name: ecommerce
-  
+  server:
+    port: 8089
   profiles:
     active: dev
   
